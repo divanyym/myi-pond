@@ -1,6 +1,10 @@
+import Monitoring from "./Monitoring"
+
 const ServicesPage = () => {
   return (
-    <div>ServicesPage</div>
+    <div> 
+      <Monitoring/>
+    </div>
   )
 }
 
