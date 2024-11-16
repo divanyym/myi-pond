@@ -1,60 +1,128 @@
-import React from 'react';
-import GaugeChart from 'react-gauge-chart';
-import "../dist/css/monitoring.css";
+import React, { useState } from "react";
+import { Container, Row, Col, Button, Card, Form } from "react-bootstrap";
+import { Line } from "react-chartjs-2";
+import { FaCalendarAlt } from "react-icons/fa";
+import "chart.js/auto"; // Untuk menghindari error pada Chart.js
+import SensorGaugeComponent from "./SensorGauge";
 
+const MonitoringComponent = () => {
+  const [selectedPool, setSelectedPool] = useState("Kolam 1");
 
+  const data = {
+    labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
+    datasets: [
+      {
+        label: "Data",
+        data: [6, 7, 8, 9, 8, 7, 8],
+        borderColor: "red",
+        fill: false,
+      },
+    ],
+  };
 
-const Monitoring = () => {
+  const handlePoolChange = (e) => {
+    setSelectedPool(e.target.value);
+  };
+
   return (
-    <div className="monitoring-container">
-      <h2 className="monitoring-title">Monitoring</h2>
-      <button className="select-pond-button">Pilih Kolam</button>
-      
-      <div className="sensor-cards">
-        {/* pH Sensor */}
-        <div className="sensor-card">
-          <h3>pH Sensor</h3>
-          <GaugeChart 
-            id="ph-gauge"
-            nrOfLevels={14}
-            colors={["#ff0000", "#f1c40f", "#2ecc71", "#8e44ad"]}
-            arcWidth={0.3}
-            percent={6.61 / 14} // Sesuaikan nilai pH
-            textColor="#000000"
-          />
-          <p className="sensor-value">6.61</p>
-        </div>
+    <div className="monitoring-section" style={{ backgroundColor: "#f5f9ff", padding: "20px 0" }}>
+      <Container>
+        <Row className="mb-4 text-center">
+          <Col>
+            <h3>Monitoring</h3>
+            <Form.Select onChange={handlePoolChange} value={selectedPool} className="mb-3" style={{ width: "150px", margin: "0 auto" }}>
+              <option value="Kolam 1">Kolam 1</option>
+              <option value="Kolam 2">Kolam 2</option>
+            </Form.Select>
+            <Button variant="warning" className="rounded-pill">
+              {selectedPool}
+            </Button>
+          </Col>
+        </Row>
 
-        {/* Turbidity Sensor */}
-        <div className="sensor-card">
-          <h3>Turbidity Sensor</h3>
-          <GaugeChart 
-            id="turbidity-gauge"
-            nrOfLevels={40}
-            colors={["#00c8ff", "#2ecc71", "#ff0000"]}
-            arcWidth={0.3}
-            percent={25.81 / 40} // Sesuaikan nilai Turbidity
-            textColor="#000000"
-          />
-          <p className="sensor-value">25.81°C</p>
-        </div>
+        <Row className="mb-4">
+          <Col md={4}>
+            <SensorGaugeComponent/>
+          </Col>
+        </Row>
 
-        {/* Temperature Sensor */}
-        <div className="sensor-card">
-          <h3>Temperature Sensor</h3>
-          <GaugeChart 
-            id="temperature-gauge"
-            nrOfLevels={1000}
-            colors={["#RED", "#f1c40f", "#ff0000"]}
-            arcWidth={0.3}
-            percent={530.24 / 1000} // Sesuaikan nilai Temperature
-            textColor="#000000"
-          />
-          <p className="sensor-value">530.24 NTU</p>
-        </div>
-      </div>
+        <h4 className="text-center mb-4">Data History</h4>
+
+        {/* Data History Cards */}
+        <Row>
+          <Col md={12} className="mb-4">
+            <Card className="p-3">
+              <Row>
+                <Col md={2} className="d-flex align-items-center">
+                  <Button variant="warning" className="rounded-pill">
+                    pH
+                  </Button>
+                </Col>
+                <Col md={8}>
+                  <Line data={data} />
+                </Col>
+                <Col md={2} className="d-flex align-items-center">
+                  <FaCalendarAlt className="me-2" />
+                  Start: dd/mm/yyyy
+                  <br />
+                  <FaCalendarAlt className="me-2" />
+                  End: dd/mm/yyyy
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+
+          <Col md={12} className="mb-4">
+            <Card className="p-3">
+              <Row>
+                <Col md={2} className="d-flex align-items-center">
+                  <Button variant="success" className="rounded-pill">
+                    Turbidity
+                  </Button>
+                </Col>
+                <Col md={8}>
+                  <Line data={data} />
+                </Col>
+                <Col md={2} className="d-flex align-items-center">
+                  <FaCalendarAlt className="me-2" />
+                  Start: dd/mm/yyyy
+                  <br />
+                  <FaCalendarAlt className="me-2" />
+                  End: dd/mm/yyyy
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+
+          <Col md={12} className="mb-4">
+            <Card className="p-3">
+              <Row>
+                <Col md={2} className="d-flex align-items-center">
+                  <Button variant="primary" className="rounded-pill">
+                    Temperature
+                  </Button>
+                </Col>
+                <Col md={8}>
+                  <Line data={data} />
+                </Col>
+                <Col md={2} className="d-flex align-items-center">
+                  <FaCalendarAlt className="me-2" />
+                  Start: dd/mm/yyyy
+                  <br />
+                  <FaCalendarAlt className="me-2" />
+                  End: dd/mm/yyyy
+                </Col>
+              </Row>
+            </Card>
+          </Col>
+        </Row>
+      </Container>
+
+      <footer className="text-center mt-5">
+        <p>All rights reserved</p>
+      </footer>
     </div>
   );
-}
+};
 
-export default Monitoring;
+export default MonitoringComponent;

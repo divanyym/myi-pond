@@ -3,7 +3,9 @@ import {Navbar, Container, Nav} from "react-bootstrap";
 import { navLinks } from "../data/index";
 import { NavLink } from "react-router-dom";
 
+
 const NavbarComponent = () => {
+  
   const[changeColor, setChangeColor] = useState(false);
 
 
