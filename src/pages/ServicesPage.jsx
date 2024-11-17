@@ -1,9 +1,18 @@
-import Monitoring from "./Monitoring"
+import DataHistoryComponent from "./DataHistoryComponent"
+import DataHistoryTurbidity from "./DataHistoryTurbidity"
+import DataHistorySuhu from "./DataHistorySuhu"
+import GaugeComponent from "./SensorGauge"
+import MonitoringComponent from "./Monitoring"
+
 
 const ServicesPage = () => {
   return (
     <div> 
-      <Monitoring/>
+      <MonitoringComponent/>
+      <GaugeComponent/>
+      <DataHistoryComponent/>
+      <DataHistoryTurbidity/>
+      <DataHistorySuhu/>
     </div>
   )
 }
