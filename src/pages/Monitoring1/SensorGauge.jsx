@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import GaugeComponent from "react-gauge-component";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { ref, onValue } from "firebase/database";
-import { db } from "../firebase";  // Pastikan ini mengarah ke konfigurasi Firebase Anda
+import { db1 } from "../../firebase";  // Pastikan ini mengarah ke konfigurasi Firebase Anda
 
 function SensorGauges() {
   const [pHValue, setPHValue] = useState(0);
@@ -10,17 +10,17 @@ function SensorGauges() {
   const [turbidity, setTurbidity] = useState(0);
 
   useEffect(() => {
-    const phRef = ref(db, "/Data_MyIpond/Data_RealTime/PH_AIR");
+    const phRef = ref(db1, "/Data_MyIpond/Data_RealTime/PH_AIR");
     const unsubscribePh = onValue(phRef, (snapshot) => {
       setPHValue(snapshot.val());
     });
 
-    const temperatureRef = ref(db, "/Data_MyIpond/Data_RealTime/SUHU_AIR");
+    const temperatureRef = ref(db1, "/Data_MyIpond/Data_RealTime/SUHU_AIR");
     const unsubscribeTemperature = onValue(temperatureRef, (snapshot) => {
       setTemperature(snapshot.val());
     });
 
-    const turbidityRef = ref(db, "/Data_MyIpond/Data_RealTime/KEKERUHAN_AIR");
+    const turbidityRef = ref(db1, "/Data_MyIpond/Data_RealTime/KEKERUHAN_AIR");
     const unsubscribeTurbidity = onValue(turbidityRef, (snapshot) => {
       setTurbidity(snapshot.val());
     });

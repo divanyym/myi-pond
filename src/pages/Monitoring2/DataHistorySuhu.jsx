@@ -11,22 +11,22 @@ import {
   CartesianGrid,
 } from "recharts";
 import { ref, onValue } from "firebase/database";
-import { db } from "../firebase";
+import { db2 } from "../../firebase";
 import moment from "moment";
 
-function HistoryChartTurbidity() {
+function HistoryChartTemperature() {
   const [data, setData] = useState([]);
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
-    const dataref = ref(db, "/Data_MyIpond/Data_Json");
+    const dataref = ref(db2, "/Data_Alat2/Data_Historical");
     const unsubscribedata = onValue(dataref, (snapshot) => {
       const fetchdata = snapshot.val();
       const chartdata = Object.keys(fetchdata)
         .map((key) => ({
           date: moment(fetchdata[key].Tanggal).toDate(), // Use moment to parse the date
-          Kekeruhan: parseFloat(fetchdata[key].Turbidity),
+          Suhu: parseFloat(fetchdata[key].Temperature),
         }))
         .filter((item) => {
           if (startDate && endDate) {
@@ -51,7 +51,7 @@ function HistoryChartTurbidity() {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h4 className="text-center mb-4">Data History Kekeruhan</h4>
+      <h4 className="text-center mb-4">Data History Suhu</h4>
 
       <div className="date-filter mb-3 d-flex justify-content-center">
         <label className="me-2 fw-bold" style={{ color: "#555" }}>Tanggal Mulai:</label>
@@ -85,8 +85,8 @@ function HistoryChartTurbidity() {
           >
             <Row>
               <Col md={2} className="d-flex align-items-center justify-content-center">
-                <Button variant="success" className="rounded-pill px-3 py-2 fw-bold" style={{ fontSize: "1rem" }}>
-                  Kekeruhan
+                <Button variant="danger" className="rounded-pill px-3 py-2 fw-bold" style={{ fontSize: "1rem" }}>
+                  Suhu
                 </Button>
               </Col>
               <Col md={10}>
@@ -103,7 +103,7 @@ function HistoryChartTurbidity() {
                     />
                     <YAxis
                       style={{ fontSize: "0.9rem", color: "#888" }}
-                      label={{ value: "Kekeruhan (NTU)", angle: -90, position: 'insideLeft', dy: -10, fontSize: "0.9rem", fill: "#888" }}
+                      label={{ value: "Suhu (°C)", angle: -90, position: 'insideLeft', dy: -10, fontSize: "0.9rem", fill: "#888" }}
                     />
                     <Legend verticalAlign="top" height={36} />
                     <Tooltip
@@ -117,27 +117,27 @@ function HistoryChartTurbidity() {
                     />
                     <Line
                       type="monotone"
-                      dataKey="Kekeruhan"
-                      stroke="url(#colorTurbidityLine)"
+                      dataKey="Suhu"
+                      stroke="url(#colorTemperatureLine)"
                       strokeWidth={3}
                       dot={{
-                        stroke: "#28a745",
+                        stroke: "#FFA500",
                         strokeWidth: 2,
                         fill: "#ffffff",
                         r: 5,
                       }}
                       activeDot={{
                         r: 8,
-                        fill: "#28a745",
+                        fill: "#FFA500",
                         stroke: "#ffffff",
                         strokeWidth: 2,
-                        boxShadow: "0px 0px 10px rgba(40, 167, 69, 0.5)",
+                        boxShadow: "0px 0px 10px rgba(255, 165, 0, 0.5)",
                       }}
                     />
                     <defs>
-                      <linearGradient id="colorTurbidityLine" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="5%" stopColor="#28a745" stopOpacity={0.8} />
-                        <stop offset="95%" stopColor="#6c757d" stopOpacity={0.2} />
+                      <linearGradient id="colorTemperatureLine" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="5%" stopColor="#FFA500" stopOpacity={0.8} />
+                        <stop offset="95%" stopColor="#FF6347" stopOpacity={0.2} />
                       </linearGradient>
                     </defs>
                   </LineChart>
@@ -151,4 +151,4 @@ function HistoryChartTurbidity() {
   );
 }
 
-export default HistoryChartTurbidity;
+export default HistoryChartTemperature;
