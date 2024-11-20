@@ -1,0 +1,389 @@
+* {
+    font-family: "Poppins", sans-serif;
+}
+
+:root {
+    --primary-color: #f6f8fd;
+    --secondary-color: #D77423;
+    --color-text: #231942;
+    --navbar-color: #ffffff;
+    --navbar-color-text: #000000;
+    --navbar-container: #071C59;
+  }
+
+/* style navbar */
+.navbar{
+    position: fixed;
+    padding: 15px 0 15px 0;
+    width: 100%;
+    transition: all 0.2s ease;
+    -webkit-transition: all 0.2s ease;
+    -moz-transition: all 0.2s ease;
+    -ms-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    z-index: 9999;
+
+
+  }
+  
+.navbar.color-active {
+    background-color: #ffffff;
+    padding: 8px 0 8px 0;
+    border-bottom: 2px solid #4090CE;
+  }
+
+.navbar .nav-link a {
+    padding: 5px 10px 5px 10px;
+    font-weight:  500;
+    text-decoration: none;
+    color : var(--color-text);
+    }
+
+.navbar .nav-link a:hover {
+    color: var(--secondary-color);
+    }
+
+.navbar .nav-link .active{
+        background-color: var(--navbar-container);
+        color: var(--primary-color);
+        border-radius: 7px 7px 7px 7px;
+    }
+
+.navbar .nav-link .active:hover{
+        color: var(--navbar-color);
+    }
+
+ 
+
+    /* Navbar */
+    
+    /* Hompage Header */
+header {
+        background: #c6ffdd; /* fallback for old browsers */
+        background: -webkit-linear-gradient(to bottom, #ffffff, #ACCFEA, #4090CE); 
+        background: linear-gradient(to bottom, #ffffff, #ACCFEA, #4090CE); 
+      }
+
+      .header-shadow {
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+      }
+      
+.homepage .header-box h1 {
+        font-size: 3.2 rem;
+        font-weight: 510;
+        color: #000000;
+      }
+  
+.homepage .header-box h1 span {
+        font-weight: 500;
+      }
+  
+.homepage .header-box p {
+        line-height: 2 ;
+        color: var(--color-text);
+        font-weight: 500;
+      }
+  
+.homepage .header-box img {
+        width: 110%;
+      }
+  
+    @media screen and (max-width: 992px) {
+      .homepage .header-box {
+        padding-top: 11rem;
+      }
+      
+      .homepage .header-box img {
+        width: 400px;
+        display: block;
+        margin-inline: auto;
+      }
+
+      @media screen and (max-width: 575px) {
+        .homepage .header-box h1 {
+          font-size: 2rem;
+        }
+      }
+
+      @media screen and (max-width: 475px){
+        .homepage .header-box h1 {
+          font-size: 2.4rem;
+        }
+        .homepage .header-box p {
+          font-size: 14px;
+        }
+        .homepage .header-box img {
+          width: 300px;
+        }
+      }
+    }
+
+    /* Homepage Kelas */
+    .homepage .kelas {
+      background-color: var(--primary-color);
+      padding-bottom: 100px; 
+    }
+    .homepage .kelas .row:nth-child(1){
+      padding-top: 150px;
+      padding-bottom: 100px;
+    }
+    .homepage .kelas .row:nth-child(1) h1,
+    .homepage .kelas .row:nth-child(1) p {
+      color: var(--color-text);
+    }
+
+    
+/*about*/
+.features-section {
+  background-color: #ffffff;
+  padding: 50px 0;
+}
+
+.feature-box {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  margin: 10px;
+}
+
+.feature-box .icon {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+  /*homepage*/
+
+  
+  .fish-image {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .benefit-item {
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-bottom: 15px;
+  }
+
+
+/*monitoring*/
+.monitoring-section {
+  background-color: #f5f9ff;
+  padding: 40px 0;
+}
+
+.card h5 {
+  font-weight: bold;
+}
+
+.card h2 {
+  font-size: 2.5rem;
+}
+
+.footer {
+  background-color: #d5eaf5;
+  padding: 20px;
+  margin-top: 40px;
+  font-weight: bold;
+}
+
+/*sensor*/
+.sensor-gauge-section {
+  background-color: #f5f9ff;
+  padding: 40px 0;
+}
+
+.card {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.sensor-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.gauge-chart {
+  margin: 0 auto; /* Memastikan gauge berada di tengah kartu */
+}
+
+.gauge-chart text {
+  font-size: 1.25rem; /* Ukuran teks di dalam gauge */
+  font-weight: bold;
+}
+
+.gauge-card {
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.sensor-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+/* historychart.css */
+.date-filter{
+  display: inline-block;
+  margin-right: 20px;
+  margin-bottom: 10px;
+}
+@media (max-width: 1200px) {
+  .responsive-container {
+      width: 100%;
+      aspect-ratio: 1; /* Atur aspek rasio untuk layar handphone */
+  }
+
+}
+
+@media (max-width: 468px){
+  .date-filter{
+      display: block;
+      margin-right: 0;
+  }
+}
+
+
+/* CSS untuk animasi hover */
+.gauge-card {
+  background: #cbc8c8;
+  transition: transform 0.3s ease, background 0.3s ease;
+  border-radius: 15px;
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.gauge-card:hover {
+  transform: scale(1.05);
+  background: #ffffff;
+}
+
+/*AboutPages*/
+
+.team-section {
+  margin-top: 40px;
+}
+
+.team-section h3 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.team-members {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.team-member {
+  text-align: center;
+}
+
+.member-icon {
+  font-size: 50px;
+  margin-bottom: 10px;
+}
+
+
+/* Homepage Ikan Gambaran umum*/
+.overview-section {
+  background: linear-gradient(to right, #eaf3ff, #ffffff);
+  border-radius: 20px; /* Membuat sudut melengkung */
+  padding: 20px;
+  transition: all 0.3s ease; /* Transisi untuk efek hover */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan default */
+  position: relative;
+  padding: 30px; /* Kurangi padding jika perlu untuk memperkecil kotak */
+  max-width: 1000px; /* Batasi lebar maksimal agar terlihat lebih kecil */
+  margin: 40px auto; 
+}
+.overview-section:hover {
+  background: linear-gradient(to right, #d1e7ff, #eaf3ff); /* Perubahan warna background */
+  transform: translateY(-5px); /* Efek gerakan ke atas saat hover */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2); /* Efek bayangan lebih besar saat hover */
+}
+
+.fish-images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px; /* Atur lebar area gambar ikan */
+}
+
+.single-fish-icon {
+  width: 200px; /* Sesuaikan ukuran ikon ikan */
+  height: auto;
+  margin-right: 100px;
+  animation: swim 3s ease-in-out infinite alternate; /* Tambahkan animasi */
+}
+
+/* Animasi bergerak ke kanan-kiri */
+@keyframes swim {
+  0% {
+    transform: translateX(0); /* Posisi awal */
+  }
+  100% {
+    transform: translateX(70px); /* Bergerak ke kanan sejauh 20px */
+  }
+}
+
+
+.overview-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.overview-section .highlight {
+  color: #ff7a00; /* Warna oranye untuk teks "Umum" */
+}
+
+.overview-section p {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+  text-align: justify; /* Justify text alignment */
+}
+
+/*swiper*/
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/*faqPage*/
+
