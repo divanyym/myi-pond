@@ -11,7 +11,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import { ref, onValue } from "firebase/database";
-import { db1 } from "../../firebase";
+import { db2 } from "../../firebase";
 import moment from "moment";
 
 function HistoryChartTurbidity() {
@@ -20,7 +20,7 @@ function HistoryChartTurbidity() {
   const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
-    const dataref = ref(db1, "/Data_MyIpond/Data_Json");
+    const dataref = ref(db2, "/Data_MyIpond/Data_Json");
     const unsubscribedata = onValue(dataref, (snapshot) => {
       const fetchdata = snapshot.val();
       const chartdata = Object.keys(fetchdata)

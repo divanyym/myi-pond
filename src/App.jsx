@@ -22,7 +22,7 @@ function App() {
             <Route path="/faq" element={<FaqPage />} />
          </Routes>
 
-         {/* <Footer/> */}
+         <Footer/> 
       </div>
    );
 }

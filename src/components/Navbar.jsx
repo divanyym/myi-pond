@@ -21,11 +21,15 @@ const NavbarComponent = () => {
     changeBackgroundColor();
 
     window.addEventListener('scroll', changeBackgroundColor);
-  });
+ 
+  return () => {
+    window.removeEventListener("scroll", changeBackgroundColor);
+  };
+}, []);
 
   return (
     <div>
-        <Navbar expand="lg" className={changeColor ? "color-active" : ""}>
+        <Navbar expand="lg" className={`fixed-top ${changeColor ? "color-active" : ""}`}>
       <Container>
         <Navbar.Brand href="#home" className="fs-3 fw-bold">My I-Pond.</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

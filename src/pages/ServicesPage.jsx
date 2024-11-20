@@ -11,7 +11,7 @@ const ServicesPage = () => {
   };
 
   return (
-    <div className="monitoring-section" style={{ backgroundColor: "#f5f9ff", padding: "20px 0" }}>
+    <div className="monitoring-section" style={{ backgroundColor: "#f5f9ff", padding: "100px 0" }}>
       <Container>
         <Row className="mb-4 text-center">
           <Col>
