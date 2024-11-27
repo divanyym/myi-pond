@@ -3,10 +3,11 @@ import { Container, Row, Col, Card, Button } from 'react-bootstrap';
 import { FaVideo, FaMobileAlt, FaNewspaper } from 'react-icons/fa';
 import DemoImage from '../assets/img/2.jpg';  // Gambar untuk Demo Alat
 import DashboardImage from '../assets/img/3.jpg';  // Gambar simulasi dashboard
+import FAQComponent from './FaqPage';
 
 const ExplorePage = () => {
   return (
-    <div className="explore-page py-5" style={{ backgroundColor: '#f9f9f9', marginTop: '50px' }}>
+    <div className="explore-page py-5" style={{marginTop: '50px' }}>
       <Container>
         {/* Judul Halaman */}
         <Row className="text-center mb-5">
@@ -115,6 +116,7 @@ const ExplorePage = () => {
             </Col>
           </Row>
         </section>
+        <FAQComponent/>
       </Container>
     </div>
   );

@@ -4,64 +4,60 @@ import IkanImage from "../assets/img/ikan.png";
 import FishImage from "../assets/img/fish.png"; // Gambar ikon ikan untuk Overview
 import BenefitsComponent from "../pages/Homepage1";
 import FeaturesComponent from "../pages/HomePage2";
-import { FaArrowDown } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
+  const navigate = useNavigate();
   return (
     <div className="homepage">
       <header className="w-100 min-vh-100 d-flex align-items-center">
         <Container>
           <Row className="header-box d-flex align-items-center">
             <Col lg="6">
-              <h1 className="header-shadow mb-4">
-                We Create <br />
-                <span style={{ color: "#4090CE" }}>solutions</span> with IoT for <br />
-                your fish pond business
-              </h1>
-              <p className="mb-4">
-                Our team keeps a keen eye on emerging ponds control and technologies such as IoT system and machine learning 
-                to ensure healthy and good growth of catfish.
+            <h2 className="header-shadow mb-4">
+            <span style={{ color: "#D77423" }}>Monitoring</span> Kualitas Air Tambak <br />
+            Secara <span style={{ color: "#4090CE" }}>Real-Time</span>, Tingkatkan <br />
+            Hasil Akuakultur Anda
+</h2>
+
+              <p 
+                className="mb-4" 
+                style={{ textAlign: "justify" }}
+              >
+                My I-Pond mampu mendeteksi parameter kualitas air
+                kolam ikan. Data yang dikumpulkan disimpan di database 
+                dan divisualisasikan melalui platform monitoring.
               </p>
+
 
               {/* Container Flexbox untuk kedua tombol */}
               <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
                 {/* Tombol "Mulai Sekarang" */}
                 <button
-                  className="btn btn-lg rounded-3"
+                  className="btn btn-lg rounded-3.5" onClick={() => navigate("/About")}
                   style={{
-                    backgroundColor: '#002366', // Biru tua
+                    backgroundColor: '#071C59', // Biru tua
                     color: '#FFFFFF',           // Teks putih
                     border: '2px solid #00A2FF', // Outline biru muda
                     boxShadow: '0px 4px 10px rgba(0, 162, 255, 0.4)', // Bayangan luar biru muda
-                    padding: '10px 20px',       // Tambahkan padding untuk proporsi lebih baik
-                    fontWeight: 'bold'
+                    padding: '10px 10px',       // Tambahkan padding untuk proporsi lebih baik
+                    fontSize: '16px'
                   }}
                 >
                   Mulai Sekarang
                 </button>
 
-                {/* Tombol "Pelajari Lebih Lanjut" */}
-                <button
-                  className="btn btn-lg rounded-3 d-flex align-items-center"
-                  style={{
-                    backgroundColor: 'transparent',
-                    color: '#000000',            // Teks hitam
-                    fontWeight: 'bold',
-                    border: 'none',
-                    padding: '10px 20px',
-                    display: 'flex',             // Menggunakan Flexbox pada tombol
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }}
-                >
-                  <FaArrowDown style={{ color: '#D77423', marginRight: '8px' }} /> 
-                  Pelajari Lebih Lanjut
-                </button>
               </div>
             </Col>
-            <Col lg="6" className="pt-lg-0 pt-5">
-              <img src={IkanImage} alt="ikan-img" className="w-100" />
-            </Col>
+            <Col lg="6" className="header-box img pt-lg-0 pt-5">
+  <img 
+    src={IkanImage} 
+    alt="ikan-img" 
+    className='animate__animated animate__fadeInUp'
+    style={{ marginLeft:"20px" , width: "100%", height: "auto" }} 
+  />
+</Col>
+
           </Row>
         </Container>
       </header>

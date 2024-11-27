@@ -20,9 +20,5 @@ export const navLinks = [
     path: "Explore",
     text: "Explore",
   },
-  {
-    id: 5,
-    path: "faq",
-    text: "FaQ",
-  },
+
 ];
