@@ -22,7 +22,7 @@ const FAQComponent = () => {
   ];
 
   return (
-    <section className="faq-section py-5" style={{ backgroundColor: '#f9f9f9', marginTop: '50px'  }}>
+    <section className="faq-section py-5" style={{marginTop: '50px'}}>
       <Container>
         <Row className="justify-content-center text-center mb-5">
           <Col lg={8}>

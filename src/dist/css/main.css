@@ -178,7 +178,7 @@ header {
 
 /*monitoring*/
 .monitoring-section {
-  background-color: #f5f9ff;
+  background-color: #ffffff;
   padding: 40px 0;
 }
 
@@ -387,3 +387,78 @@ header {
 
 /*faqPage*/
 
+/*Prediction Container*/
+.prediction-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  
+}
+
+.cardpre {
+  background-color: rgb(224, 224, 225);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  
+}
+
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+p {
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+.input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.input-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.predict-button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.predict-button:hover {
+  background-color: #45a049;
+}
+
+.prediction-result {
+  margin-top: 20px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #2e7d32;
+}
+
+.error {
+  color: #e57373;
+  margin-top: 20px;
+}

@@ -64,9 +64,8 @@ const NavbarComponent = () => {
         </Container>
       </Navbar>
 
-      {/* Render MoreInfoSidebar jika showSidebar true */}
       {showSidebar && <MoreInfoSidebar show={showSidebar} onHide={toggleSidebar} />}  
-      {/* Menampilkan sidebar */}
+
     </div>
   );
 };

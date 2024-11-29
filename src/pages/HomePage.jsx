@@ -21,7 +21,7 @@ const HomePage = () => {
 </h2>
 
               <p 
-                className="mb-4" 
+                className="mb-2" 
                 style={{ textAlign: "justify" }}
               >
                 My I-Pond mampu mendeteksi parameter kualitas air

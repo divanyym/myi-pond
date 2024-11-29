@@ -3,6 +3,7 @@ import Slide1 from "../assets/img/2.jpg";
 import Slide2 from "../assets/img/3.jpg";
 import Slide3 from "../assets/img/4.jpg";
 import Slide4 from "../assets/img/5.jpg";
+import ExplorePage from './ExplorePage';
 
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -74,9 +75,11 @@ function AboutUs() {
               </Card>
             </Col>
           </Row>
+          <ExplorePage/>
         </section>
       </Container>
     </div>
+    
   );
 }
 

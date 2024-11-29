@@ -6,7 +6,7 @@ import MoreInfoSidebar from "./components/MoreInfo";
 
 import HomePage from "./pages/HomePage";
 import AboutPages from "./pages/AboutPages";
-import ExplorePage from "./pages/ExplorePage";
+import PredictionPage from "./pages/Prediksi";
 import ServicesPage from "./pages/ServicesPage";
 
 
@@ -18,9 +18,9 @@ function App() {
          <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/About" element={<AboutPages />} />
-            <Route path="/Services" element={<ServicesPage />} />
-            <Route path="/Explore" element={<ExplorePage />} />
+            <Route path="/Monitoring" element={<ServicesPage />} />
             <Route path="/Info" element={<MoreInfoSidebar />} />
+            <Route path="/Prediksi" element={<PredictionPage />} />
          </Routes>
 
          <Footer/> 
