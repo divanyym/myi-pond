@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Col } from "react-bootstrap";
 import IkanImage from "../assets/img/ikan.png";
-import FishImage from "../assets/img/fish.png"; // Gambar ikon ikan untuk Overview
+import FishImage from "../assets/img/Fish.png"; // Gambar ikon ikan untuk Overview
 import BenefitsComponent from "../pages/Homepage1";
 import FeaturesComponent from "../pages/HomePage2";
 import { useNavigate } from 'react-router-dom';
