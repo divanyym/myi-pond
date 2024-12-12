@@ -11,7 +11,7 @@ import {
   CartesianGrid,
 } from "recharts";
 import { ref, onValue } from "firebase/database";
-import { db2 } from "../../firebase";
+import { db1 } from "../../firebase";
 import moment from "moment";
 
 function HistoryChartTemperature() {
@@ -20,25 +20,43 @@ function HistoryChartTemperature() {
   const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
-    const dataref = ref(db2, "/Data_MyIpond/Data_Json");
+    const dataref = ref(db1, "/Data_Alat2/Data_Historical");
     const unsubscribedata = onValue(dataref, (snapshot) => {
       const fetchdata = snapshot.val();
-      const chartdata = Object.keys(fetchdata)
-        .map((key) => ({
-          date: moment(fetchdata[key].Tanggal).toDate(), // Use moment to parse the date
-          Suhu: parseFloat(fetchdata[key].Temperature),
-        }))
-        .filter((item) => {
-          if (startDate && endDate) {
-            return (
-              item.date >= startDate.startOf("day").toDate() &&
-              item.date <= endDate.endOf("day").toDate()
-            );
-          }
-          return true;
-        });
+      console.log("Fetched Data:", fetchdata); // Debugging untuk memeriksa data
+
+      if (!fetchdata) {
+        setData([]);
+        return;
+      }
+
+      const chartdata = Object.entries(fetchdata || {})
+  .flatMap(([dateKey, timeData]) =>
+    Object.entries(timeData || {}).map(([timeKey, values]) => {
+      const dateTime = moment(`${dateKey} ${timeKey}`, "MM-DD-YYYY HH:mm:ss");
+
+      return {
+        date: dateTime.isValid() ? dateTime.toDate() : null,
+        Temperature: parseFloat(values?.Temperature?.replace(",", ".")) || 0,
+      };
+    })
+  )
+  .filter((item) => item.date && !isNaN(item.Temperature)) // Hapus entri invalid
+  .filter((item) => {
+    if (startDate && endDate) {
+      return (
+        moment(item.date).isSameOrAfter(startDate) &&
+        moment(item.date).isSameOrBefore(endDate)
+      );
+    }
+    return true;
+  });
+
+
+
       setData(chartdata);
     });
+
     return () => {
       unsubscribedata();
     };
@@ -85,7 +103,11 @@ function HistoryChartTemperature() {
           >
             <Row>
               <Col md={2} className="d-flex align-items-center justify-content-center">
-                <Button variant="danger" className="rounded-pill px-3 py-2 fw-bold" style={{ fontSize: "1rem" }}>
+                <Button
+                  variant="danger"
+                  className="rounded-pill px-3 py-2 fw-bold"
+                  style={{ fontSize: "1rem" }}
+                >
                   Suhu
                 </Button>
               </Col>
@@ -97,13 +119,21 @@ function HistoryChartTemperature() {
                   >
                     <CartesianGrid strokeDasharray="3 3" opacity={0.1} />
                     <XAxis
-                      dataKey="date"
-                      tickFormatter={(date) => moment(date).format("DD/MM")}
-                      style={{ fontSize: "0.9rem", color: "#888" }}
-                    />
+                    dataKey="date"
+                    tickFormatter={(date) => date} // Menampilkan key sebagai label
+                    style={{ fontSize: "0.9rem", color: "#888" }}
+                  />
+
                     <YAxis
                       style={{ fontSize: "0.9rem", color: "#888" }}
-                      label={{ value: "Suhu (°C)", angle: -90, position: 'insideLeft', dy: -10, fontSize: "0.9rem", fill: "#888" }}
+                      label={{
+                        value: "Suhu (°C)",
+                        angle: -90,
+                        position: "insideLeft",
+                        dy: -10,
+                        fontSize: "0.9rem",
+                        fill: "#888",
+                      }}
                     />
                     <Legend verticalAlign="top" height={36} />
                     <Tooltip
@@ -117,7 +147,7 @@ function HistoryChartTemperature() {
                     />
                     <Line
                       type="monotone"
-                      dataKey="Suhu"
+                      dataKey="Temperature"
                       stroke="url(#colorTemperatureLine)"
                       strokeWidth={3}
                       dot={{

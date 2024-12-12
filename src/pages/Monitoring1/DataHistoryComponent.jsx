@@ -12,7 +12,7 @@ import {
 
 } from "recharts";
 import { ref, onValue } from "firebase/database";
-import { db2 } from "../../firebase";
+import { db1 } from "../../firebase";
 import moment from "moment";
 
 const DataHistoryComponent = () => {
@@ -21,23 +21,35 @@ const DataHistoryComponent = () => {
   const [endDate, setEndDate] = useState(null);
 
   useEffect(() => {
-    const dataref = ref(db2, "/Data_MyIpond/Data_Json");
+    const dataref = ref(db1, "/Data_Alat2/Data_Historical");
     const unsubscribedata = onValue(dataref, (snapshot) => {
       const fetchdata = snapshot.val();
-      const chartdata = Object.keys(fetchdata)
-        .map((key) => ({
-          date: moment(fetchdata[key].Tanggal).toDate(),
-          pH: parseFloat(fetchdata[key].pH),
-        }))
-        .filter((item) => {
-          if (startDate && endDate) {
-            return (
-              item.date >= startDate.startOf("day").toDate() &&
-              item.date <= endDate.endOf("day").toDate()
-            );
-          }
-          return true;
-        });
+      console.log("Fetched Data:", fetchdata); // Debugging untuk memeriksa data
+      if (!fetchdata) {
+        setData([]);
+        return;
+      }
+          const chartdata = Object.entries(fetchdata || {})
+      .flatMap(([dateKey, timeData]) =>
+        Object.entries(timeData || {}).map(([timeKey, values]) => {
+          const dateTime = moment(`${dateKey} ${timeKey}`, "MM-DD-YYYY HH:mm:ss");
+
+          return {
+            date: dateTime.isValid() ? dateTime.toDate() : null,
+            pH: parseFloat(values?.pH?.replace(",", ".")) || 0,
+          };
+        })
+      )
+      .filter((item) => item.date && !isNaN(item.pH)) // Hapus entri invalid
+      .filter((item) => {
+        if (startDate && endDate) {
+          return (
+            moment(item.date).isSameOrAfter(startDate) &&
+            moment(item.date).isSameOrBefore(endDate)
+          );
+        }
+        return true;
+      });
       setData(chartdata);
     });
     return () => {

@@ -5,10 +5,12 @@ import GaugeComponent from "./Monitoring1/SensorGauge"
 
 
 
+
 const MonitoringPage = () => {
   return (
     <div> 
       <GaugeComponent/>
+   
       <DataHistoryComponent/>
       <DataHistoryTurbidity/>
       <DataHistorySuhu/>
