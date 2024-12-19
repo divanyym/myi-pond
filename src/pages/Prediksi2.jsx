@@ -44,7 +44,7 @@ function SensorGauges2() {
   }, []);
 
   return (
-    <div className="sensor-gauge-section" style={{ padding: "100px", textAlign: "center" }}>
+    <div style={{textAlign: "center" }}>
             <h4 className="mb-4">Kondisi Kolam 2</h4>
             <p style={{ fontSize: "1.2rem", color: "#555" }}>
                Halo petambak, kondisi kolam kamu{" "}

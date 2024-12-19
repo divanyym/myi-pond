@@ -3,6 +3,7 @@ import { Container, Row, Col, Card } from "react-bootstrap";
 import { ref, onValue } from "firebase/database";
 import { db1 } from "./../firebase";
 import SensorGauges2 from "./Prediksi2";
+import Informasi from "./Informasi";
 
 // Komponen untuk menampilkan data sensor
 function SensorGauges() {
@@ -87,7 +88,13 @@ function SensorGauges() {
             <SensorGauges2 />
     
         </Row>
+
+         <Informasi/>
+        
       </Container>
+
+
+      
     </div>
   );
 }
