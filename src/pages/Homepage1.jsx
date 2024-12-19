@@ -8,7 +8,7 @@ const BenefitsComponent = () => {
   const navigate = useNavigate();
 
   const handleNavigateToMonitoring = () => {
-    navigate('/Monitoring'); // Pastikan '/monitoring' sesuai dengan route Anda
+    navigate('/Monitoring'); 
   };
 
   const benefitsData = [

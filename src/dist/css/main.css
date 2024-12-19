@@ -59,7 +59,7 @@
     
     /* Hompage Header */
 header {
-        background: #c6ffdd; /* fallback for old browsers */
+       
         background: -webkit-linear-gradient(to bottom, #ffffff, #ACCFEA, #4090CE); 
         background: linear-gradient(to bottom, #ffffff, #ACCFEA, #4090CE); 
       }
@@ -190,18 +190,8 @@ header {
   font-size: 2.5rem;
 }
 
-.footer {
-  background-color: #d5eaf5;
-  padding: 20px;
-  margin-top: 40px;
-  font-weight: bold;
-}
 
-/*sensor*/
-.sensor-gauge-section {
-  background-color: #f5f9ff;
-  padding: 40px 0;
-}
+
 
 .card {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -300,19 +290,18 @@ header {
   margin-bottom: 10px;
 }
 
-
 /* Homepage Ikan Gambaran umum*/
 .overview-section {
   background: linear-gradient(to right, #eaf3ff, #ffffff);
   border-radius: 20px; /* Membuat sudut melengkung */
-  padding: 20px;
+  padding: 10px;
   transition: all 0.3s ease; /* Transisi untuk efek hover */
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Bayangan default */
   position: relative;
-  padding: 30px; /* Kurangi padding jika perlu untuk memperkecil kotak */
   max-width: 1000px; /* Batasi lebar maksimal agar terlihat lebih kecil */
   margin: 40px auto; 
 }
+
 .overview-section:hover {
   background: linear-gradient(to right, #d1e7ff, #eaf3ff); /* Perubahan warna background */
   transform: translateY(-5px); /* Efek gerakan ke atas saat hover */

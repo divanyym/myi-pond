@@ -33,7 +33,7 @@ function SensorGauges() {
   }, []);
 
   return (
-    <div className="sensor-gauge-section">
+    <div>
       <Container>
         <Row className="justify-content-center">
           <Col md={4} className="mb-4">

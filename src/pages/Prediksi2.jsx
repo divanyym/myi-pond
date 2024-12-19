@@ -2,37 +2,38 @@ import React, { useState, useEffect } from "react";
 import { Container, Row, Col, Card } from "react-bootstrap";
 import { ref, onValue } from "firebase/database";
 import { db1 } from "./../firebase";
-import SensorGauges2 from "./Prediksi2";
+
 
 // Komponen untuk menampilkan data sensor
-function SensorGauges() {
+function SensorGauges2() {
   const [pHValue, setPHValue] = useState(0);
   const [temperature, setTemperature] = useState(0);
   const [turbidity, setTurbidity] = useState(0);
   const [prediction, setPrediction] = useState("Loading...");
 
   useEffect(() => {
-    const phRef = ref(db1, "/Data_Alat2/Data_RealTime/PH_AIR");
+    const phRef = ref(db1, "/Data_MyIpond/Data_RealTime/PH_AIR");
     const unsubscribePh = onValue(phRef, (snapshot) => {
       setPHValue(snapshot.val());
     });
 
-    const temperatureRef = ref(db1, "/Data_Alat2/Data_RealTime/SUHU_AIR");
+    const temperatureRef = ref(db1, "/Data_MyIpond/Data_RealTime/SUHU_AIR");
     const unsubscribeTemperature = onValue(temperatureRef, (snapshot) => {
       setTemperature(snapshot.val());
     });
 
-    const turbidityRef = ref(db1, "/Data_Alat2/Data_RealTime/KEKERUHAN_AIR");
+    const turbidityRef = ref(db1, "/Data_MyIpond/Data_RealTime/KEKERUHAN_AIR");
     const unsubscribeTurbidity = onValue(turbidityRef, (snapshot) => {
       setTurbidity(snapshot.val());
     });
+    const dataRef = ref(db1, "/Data_MyIpond/HasilPrediksi/Prediksi/Isi");
 
-    const dataRef = ref(db1, "/Data_Alat2/HasilPrediksi/Prediksi/Isi");
     const unsubscribe = onValue(dataRef, (snapshot) => {
       const data = snapshot.val();
-      console.log("Data dari Firebase:", data);
+      console.log("Data dari Firebase:", data); // Debugging untuk melihat data yang diterima
       setPrediction(data || "Data tidak tersedia");
     });
+
 
     return () => {
       unsubscribePh();
@@ -43,12 +44,12 @@ function SensorGauges() {
   }, []);
 
   return (
-    <div style={{ paddingTop: "120px", textAlign: "center" }}>
-      <h4 className="mb-4">Kondisi Kolam 1</h4>
-      <p style={{ fontSize: "1.2rem", color: "#555" }}>
-        Halo petambak, kondisi kolam kamu{" "}
-        <span style={{ fontWeight: "bold", color: "#007bff" }}>{prediction}</span>.
-      </p>
+    <div className="sensor-gauge-section" style={{ padding: "100px", textAlign: "center" }}>
+            <h4 className="mb-4">Kondisi Kolam 2</h4>
+            <p style={{ fontSize: "1.2rem", color: "#555" }}>
+               Halo petambak, kondisi kolam kamu{" "}
+              <span style={{ fontWeight: "bold", color: "#007bff" }}>{prediction}</span>.
+            </p>
       <Container>
         <Row className="justify-content-center">
           {/* pH Sensor */}
@@ -80,16 +81,15 @@ function SensorGauges() {
               </p>
             </Card>
           </Col>
-        </Row>
-        {/* Komponen Prediksi */}
-        <Row>
-        
-            <SensorGauges2 />
-    
+
+          
+          
+          
         </Row>
       </Container>
     </div>
   );
 }
 
-export default SensorGauges;
+export default SensorGauges2;
+

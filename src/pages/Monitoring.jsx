@@ -1,6 +1,4 @@
-import DataHistoryComponent from "./Monitoring1/DataHistoryComponent"
-import DataHistoryTurbidity from "./Monitoring1/DataHistoryTurbidity"
-import DataHistorySuhu from "./Monitoring1/DataHistorySuhu"
+import CombinedHistoryChart from "./Monitoring1/DataHistory"
 import GaugeComponent from "./Monitoring1/SensorGauge"
 
 
@@ -10,10 +8,10 @@ const MonitoringPage = () => {
   return (
     <div> 
       <GaugeComponent/>
+
+      <CombinedHistoryChart/>
    
-      <DataHistoryComponent/>
-      <DataHistoryTurbidity/>
-      <DataHistorySuhu/>
+      
     </div>
   )
 }
