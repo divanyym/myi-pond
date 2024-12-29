@@ -32,7 +32,7 @@ const ServicesPage = () => {
         </Row>
 
         {/* Conditional Rendering based on selected pool */}
-        {selectedPool === "Kolam 1" ? <MonitoringPage /> : <MonitoringPage2 />}
+        {selectedPool === "Kolam 1" ? <MonitoringPage2 /> : <MonitoringPage />}
       </Container>
     </div>
   );
