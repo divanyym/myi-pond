@@ -10,17 +10,17 @@ function SensorGauges() {
   const [turbidity, setTurbidity] = useState(0);
 
   useEffect(() => {
-    const phRef = ref(db1, "/Data_Alat2/Data_RealTime/PH_AIR");
+    const phRef = ref(db1, "/Data_MyIpond/Data_RealTime/PH_AIR");
     const unsubscribePh = onValue(phRef, (snapshot) => {
       setPHValue(snapshot.val());
     });
 
-    const temperatureRef = ref(db1, "/Data_Alat2/Data_RealTime/SUHU_AIR");
+    const temperatureRef = ref(db1, "/Data_MyIpond/Data_RealTime/SUHU_AIR");
     const unsubscribeTemperature = onValue(temperatureRef, (snapshot) => {
       setTemperature(snapshot.val());
     });
 
-    const turbidityRef = ref(db1, "/Data_Alat2/Data_RealTime/KEKERUHAN_AIR");
+    const turbidityRef = ref(db1, "/Data_MyIpond/Data_RealTime/KEKERUHAN_AIR");
     const unsubscribeTurbidity = onValue(turbidityRef, (snapshot) => {
       setTurbidity(snapshot.val());
     });

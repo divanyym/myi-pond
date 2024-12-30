@@ -23,12 +23,12 @@ function SensorGauges() {
       setTemperature(snapshot.val());
     });
 
-    const turbidityRef = ref(db1, "/Data_Alat2/Data_RealTime/KEKERUHAN_AIR");
+    const turbidityRef = ref(db1, "/Data_Alat2/Data_RealTime/KEKERUHAN_AIR2");
     const unsubscribeTurbidity = onValue(turbidityRef, (snapshot) => {
       setTurbidity(snapshot.val());
     });
 
-    const dataRef = ref(db1, "/Data_Alat2/HasilPrediksi/Prediksi/Isi");
+    const dataRef = ref(db1, "/Data_Alat2/HasilPrediksi/Prediksi/Isi"); //prediksi database
     const unsubscribe = onValue(dataRef, (snapshot) => {
       const data = snapshot.val();
       console.log("Data dari Firebase:", data);
